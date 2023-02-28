@@ -10,3 +10,16 @@ export const turnLeft = ({ orientation }) => {
       return { orientation: "E" };
   }
 };
+
+export const turnRight = ({ orientation }) => {
+  switch (orientation) {
+    case "E":
+      return { orientation: "S" };
+    case "N":
+      return { orientation: "E" };
+    case "W":
+      return { orientation: "N" };
+    case "S":
+      return { orientation: "W" };
+  }
+};
