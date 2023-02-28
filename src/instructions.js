@@ -24,7 +24,7 @@ export const turnRight = ({ orientation }) => {
   }
 };
 
-export const moveForward = ({ orientation, x, y }, { maxX, maxY }) => {
+export const moveForwardNoBounds = ({ orientation, x, y }) => {
   switch (orientation) {
     case "N":
       return { x, y: y + 1 };
@@ -35,4 +35,14 @@ export const moveForward = ({ orientation, x, y }, { maxX, maxY }) => {
     case "W":
       return { x: x - 1, y };
   }
+};
+
+export const moveForward = (robot, { maxX, maxY }) => {
+  const updatedRobot = moveForwardNoBounds(robot);
+  const { x, y } = updatedRobot;
+  if (x < 0) return robot;
+  if (x > maxX) return robot;
+  if (y < 0) return robot;
+  if (y > maxY) return robot;
+  return updatedRobot;
 };

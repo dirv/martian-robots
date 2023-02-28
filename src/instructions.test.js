@@ -59,4 +59,24 @@ describe("moveForward", () => {
     const robot = { orientation: "W", x: 1, y: 1 };
     expect(moveForward(robot, world)).toContain({ x: 0, y: 1 });
   });
+
+  it("does not move if the robot would go off the north edge", () => {
+    const robot = { orientation: "N", x: 1, y: world.maxY };
+    expect(moveForward(robot, world)).toContain({ x: 1, y: world.maxY });
+  });
+
+  it("does not move if the robot would go off the east edge", () => {
+    const robot = { orientation: "E", x: world.maxX, y: 1 };
+    expect(moveForward(robot, world)).toContain({ x: world.maxX, y: 1 });
+  });
+
+  it("does not move if the robot would go off the south edge", () => {
+    const robot = { orientation: "S", x: 1, y: 0 };
+    expect(moveForward(robot, world)).toContain({ x: 1, y: 0 });
+  });
+
+  it("does not move if the robot would go off the west edge", () => {
+    const robot = { orientation: "W", x: 0, y: 1 };
+    expect(moveForward(robot, world)).toContain({ x: 0, y: 1 });
+  });
 });
