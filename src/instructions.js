@@ -23,3 +23,16 @@ export const turnRight = ({ orientation }) => {
       return { orientation: "W" };
   }
 };
+
+export const moveForward = ({ orientation, x, y }, { maxX, maxY }) => {
+  switch (orientation) {
+    case "N":
+      return { x, y: y + 1 };
+    case "E":
+      return { x: x + 1, y };
+    case "S":
+      return { x, y: y - 1 };
+    case "W":
+      return { x: x - 1, y };
+  }
+};

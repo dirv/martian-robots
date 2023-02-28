@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { turnLeft, turnRight } from "./instructions.js";
+import { moveForward, turnLeft, turnRight } from "./instructions.js";
 
 describe("turnLeft", () => {
   it("turns to N if current orientation is E", () => {
@@ -34,5 +34,29 @@ describe("turnRight", () => {
 
   it("turns to W if current orientation is S", () => {
     expect(turnRight({ orientation: "S" })).toContain({ orientation: "W" });
+  });
+});
+
+describe("moveForward", () => {
+  const world = { maxX: 5, maxY: 5 };
+
+  it("moves to 1,2 if position is 1,1 and orientation is N", () => {
+    const robot = { orientation: "N", x: 1, y: 1 };
+    expect(moveForward(robot, world)).toContain({ x: 1, y: 2 });
+  });
+
+  it("moves to 2,1 if position is 1,1 and orientation is E", () => {
+    const robot = { orientation: "E", x: 1, y: 1 };
+    expect(moveForward(robot, world)).toContain({ x: 2, y: 1 });
+  });
+
+  it("moves to 1,0 if position is 1,1 and orientation is S", () => {
+    const robot = { orientation: "S", x: 1, y: 1 };
+    expect(moveForward(robot, world)).toContain({ x: 1, y: 0 });
+  });
+
+  it("moves to 0,1 if position is 1,1 and orientation is W", () => {
+    const robot = { orientation: "W", x: 1, y: 1 };
+    expect(moveForward(robot, world)).toContain({ x: 0, y: 1 });
   });
 });
