@@ -40,9 +40,8 @@ export const moveForwardNoBounds = ({ orientation, x, y }) => {
 export const moveForward = (robot, { maxX, maxY }) => {
   const updatedRobot = moveForwardNoBounds(robot);
   const { x, y } = updatedRobot;
-  if (x < 0) return robot;
-  if (x > maxX) return robot;
-  if (y < 0) return robot;
-  if (y > maxY) return robot;
+  if (x < 0 || x > maxX || y < 0 || y > maxY) {
+    return { ...robot, lost: true };
+  }
   return updatedRobot;
 };

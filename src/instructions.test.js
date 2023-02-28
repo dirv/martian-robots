@@ -79,4 +79,9 @@ describe("moveForward", () => {
     const robot = { orientation: "W", x: 0, y: 1 };
     expect(moveForward(robot, world)).toContain({ x: 0, y: 1 });
   });
+
+  it("marks the robot as lost if it goes off an edge", () => {
+    const robot = { orientation: "W", x: 0, y: 1 };
+    expect(moveForward(robot, world)).toContain({ lost: true });
+  });
 });
