@@ -24,7 +24,7 @@ export const turnRight = ({ orientation }) => {
   }
 };
 
-export const moveForwardNoBounds = ({ orientation, x, y }) => {
+const moveForwardNoBounds = ({ orientation, x, y }) => {
   switch (orientation) {
     case "N":
       return { x, y: y + 1 };
