@@ -15,7 +15,7 @@ You should then see the program results printed on screen.
 
 ## Sample test data
 
-Sample input:
+Sample input (this is in the repo as `test/sampleInput.txt`):
 
 ```
 5 3
