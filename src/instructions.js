@@ -45,3 +45,9 @@ export const moveForward = (robot, { maxX, maxY }) => {
   }
   return updatedRobot;
 };
+
+export const instructionLookup = {
+  F: moveForward,
+  L: turnLeft,
+  R: turnRight,
+};
